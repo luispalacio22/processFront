@@ -1,0 +1,74 @@
+<div class="formularioRegistro">
+  <h2>Crear Usuario</h2>
+  <form [formGroup]="usuarioForm" (ngSubmit)="guardar()">
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre de usuario">
+    </div>
+    <div class="form-group">
+      <label>Activo</label>
+      <input type="boolean" formControlName="activo" class="form-control" placeholder="true o false">
+    </div>
+    <div class="form-group">
+      <label>Fecha de nacimiento</label>
+      <input type="date" formControlName="fechaNacimiento" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Dependencia</label>
+      <select name="pais" id="dependencia" formControlName="dependencia" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of dependencias">{{item.nombre}} </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Perfil</label>
+      <select name="estado" id="perfil" formControlName="perfil" class="form-control">
+        <option [ngValue]="item" *ngFor="let item of perfiles">{{item.nombre}} </option>
+      </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary guardar"  >Guardar</button>
+
+  </form>
+</div>
+
+<div class="formularioRegistro">
+<h2>Usuarios registrados</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Fecha nacimiento</th>
+        <th>Activo</th>
+        <th>Dependencia</th>
+        <th>Perfil</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of usuarios">
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.fechaNacimiento}}</td>
+        <td>{{item.activo}}</td>
+        <td>{{item.dependencia.nombre}}</td>
+        <td>{{item.perfil.nombre}}</td>
+        <td class="botones">
+          <button type="button" class="btn btn-success" (click)="editar(item)" >Editar</button>
+          <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+<router-outlet></router-outlet>

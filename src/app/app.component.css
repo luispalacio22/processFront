@@ -1,0 +1,17 @@
+.formularioRegistro{
+    padding-left: 30%;
+    padding-right: 30%;
+    margin-top: 3rem;
+}
+
+.botones{
+    display: flex;
+}
+
+.guardar{
+    margin-top: 0.5rem;
+}
+
+.btn{
+    margin-right: 0.5rem;
+}
